@@ -1,48 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 310" width="820" height="310">
-  <rect width="820" height="310" fill="#f8fafc" rx="12"/>
-  <text x="410" y="32" font-family="Arial" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle">
-    Original Infographic 2: India's AI &amp; Neurotechnology Ecosystem
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="250" viewBox="0 0 840 250">
+  <rect x="0" y="0" width="840" height="250" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="420" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#0f172a">
+    India's AI &amp; Neurotechnology Ecosystem Overview
   </text>
 
-  <!-- Column 1: Academic Research -->
-  <rect x="24" y="55" width="245" height="225" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
-  <rect x="24" y="55" width="245" height="38" rx="8" fill="#ea580c"/>
-  <text x="146" y="79" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Top Research Institutes</text>
-  <text x="38" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#9a3412">• IISc Bengaluru (2026):</text>
-  <text x="46" y="132" font-family="Arial" font-size="11.5" fill="#1e293b">Moonshot Brain Co-processor</text>
-  <text x="46" y="147" font-family="Arial" font-size="11.5" fill="#1e293b">for stroke motor/cognitive rehab.</text>
-  <text x="38" y="173" font-family="Arial" font-size="12" font-weight="bold" fill="#9a3412">• IIT Delhi &amp; IIT Kanpur:</text>
-  <text x="46" y="190" font-family="Arial" font-size="11.5" fill="#1e293b">Wearable hybrid fNIRS-EEG</text>
-  <text x="46" y="205" font-family="Arial" font-size="11.5" fill="#1e293b">&amp; robotic hand rehabilitation.</text>
-  <text x="38" y="231" font-family="Arial" font-size="12" font-weight="bold" fill="#9a3412">• NBRC Manesar:</text>
-  <text x="46" y="248" font-family="Arial" font-size="11.5" fill="#1e293b">Computational neuroscience &amp;</text>
-  <text x="46" y="263" font-family="Arial" font-size="11.5" fill="#1e293b">Indian brain-mapping datasets.</text>
+  <!-- Column 1 -->
+  <rect x="24" y="54" width="250" height="172" rx="10" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+  <rect x="24" y="54" width="250" height="34" rx="8" fill="#0284c7"/>
+  <text x="149" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Research Institutions</text>
+  <text x="38" y="110" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• IISc Bengaluru</text>
+  <text x="48" y="128" font-family="Arial, sans-serif" font-size="11" fill="#334155">AI Brain Co-Processor &amp; rehab</text>
+  <text x="38" y="152" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• IIT Delhi &amp; IIT Kanpur</text>
+  <text x="48" y="170" font-family="Arial, sans-serif" font-size="11" fill="#334155">Wearable fNIRS-EEG &amp; robotics</text>
+  <text x="38" y="194" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• NBRC</text>
+  <text x="48" y="212" font-family="Arial, sans-serif" font-size="11" fill="#334155">Computational brain mapping</text>
 
-  <!-- Column 2: Startups & Innovation -->
-  <rect x="288" y="55" width="245" height="225" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-  <rect x="288" y="55" width="245" height="38" rx="8" fill="#16a34a"/>
-  <text x="410" y="79" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Startups &amp; Public Support</text>
-  <text x="302" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#166534">• BrainSightAI (Bengaluru):</text>
-  <text x="310" y="132" font-family="Arial" font-size="11.5" fill="#1e293b">AI connectomics mapping for</text>
-  <text x="310" y="147" font-family="Arial" font-size="11.5" fill="#1e293b">brain tumor &amp; neuro-surgery.</text>
-  <text x="302" y="173" font-family="Arial" font-size="12" font-weight="bold" fill="#166534">• Neuro-Rehab Startups:</text>
-  <text x="310" y="190" font-family="Arial" font-size="11.5" fill="#1e293b">Low-cost EEG headsets &amp; AI</text>
-  <text x="310" y="205" font-family="Arial" font-size="11.5" fill="#1e293b">mental-health neurofeedback.</text>
-  <text x="302" y="231" font-family="Arial" font-size="12" font-weight="bold" fill="#166534">• Government Initiatives:</text>
-  <text x="310" y="248" font-family="Arial" font-size="11.5" fill="#1e293b">DST, ANRF/SERB grants, and</text>
-  <text x="310" y="263" font-family="Arial" font-size="11.5" fill="#1e293b">IndiaAI Mission compute support.</text>
+  <!-- Column 2 -->
+  <rect x="295" y="54" width="250" height="172" rx="10" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <rect x="295" y="54" width="250" height="34" rx="8" fill="#1d4ed8"/>
+  <text x="420" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Startups &amp; Public Backing</text>
+  <text x="309" y="110" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• BrainSightAI</text>
+  <text x="319" y="128" font-family="Arial, sans-serif" font-size="11" fill="#334155">AI connectomics for surgery</text>
+  <text x="309" y="152" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• DST, ANRF/SERB &amp; IndiaAI</text>
+  <text x="319" y="170" font-family="Arial, sans-serif" font-size="11" fill="#334155">Med-tech grants &amp; compute</text>
+  <text x="309" y="194" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• Clinical Focus</text>
+  <text x="319" y="212" font-family="Arial, sans-serif" font-size="11" fill="#334155">Stroke recovery &amp; accessibility</text>
 
-  <!-- Column 3: Challenges & Ethics -->
-  <rect x="552" y="55" width="245" height="225" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-  <rect x="552" y="55" width="245" height="38" rx="8" fill="#2563eb"/>
-  <text x="674" y="79" font-family="Arial" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Key Challenges &amp; Ethics</text>
-  <text x="566" y="115" font-family="Arial" font-size="12" font-weight="bold" fill="#1e40af">• Affordability &amp; Scale:</text>
-  <text x="574" y="132" font-family="Arial" font-size="11.5" fill="#1e293b">Designing low-cost devices for</text>
-  <text x="574" y="147" font-family="Arial" font-size="11.5" fill="#1e293b">rural and public hospitals.</text>
-  <text x="566" y="173" font-family="Arial" font-size="12" font-weight="bold" fill="#1e40af">• Regulatory Frameworks:</text>
-  <text x="574" y="190" font-family="Arial" font-size="11.5" fill="#1e293b">Need clear CDSCO clinical</text>
-  <text x="574" y="205" font-family="Arial" font-size="11.5" fill="#1e293b">trial rules for neural implants.</text>
-  <text x="566" y="231" font-family="Arial" font-size="12" font-weight="bold" fill="#1e40af">• Neural Data Privacy:</text>
-  <text x="574" y="248" font-family="Arial" font-size="11.5" fill="#1e293b">Protecting brainwave data &amp;</text>
-  <text x="574" y="263" font-family="Arial" font-size="11.5" fill="#1e293b">cognitive freedom under law.</text>
+  <!-- Column 3 -->
+  <rect x="566" y="54" width="250" height="172" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+  <rect x="566" y="54" width="250" height="34" rx="8" fill="#0f766e"/>
+  <text x="691" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Ethics &amp; Scale-Up</text>
+  <text x="580" y="110" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• Affordability &amp; Reach</text>
+  <text x="590" y="128" font-family="Arial, sans-serif" font-size="11" fill="#334155">Low-cost non-invasive tools</text>
+  <text x="580" y="152" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• Regulation &amp; Safety</text>
+  <text x="590" y="170" font-family="Arial, sans-serif" font-size="11" fill="#334155">CDSCO pathways &amp; clinical trials</text>
+  <text x="580" y="194" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">• Neural Data Privacy</text>
+  <text x="590" y="212" font-family="Arial, sans-serif" font-size="11" fill="#334155">Consent &amp; brainwave security</text>
 </svg>

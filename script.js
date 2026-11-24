@@ -45,25 +45,38 @@ var bciInnovations = [
 var wavePhase = 0;
 var waveFrequency = 10;
 var isAnimating = true;
+var labAudioCtx = null;
 
-// FUNCTION 1: Play a short synthesized audio tone using Web Audio API
+// FUNCTION 1: Play a short synthesized audio tone using Web Audio API (mobile/iOS safe)
 function playNeuralTone(freqHz) {
   try {
     var AudioCtx = window.AudioContext || window.webkitAudioContext;
-    var ctx = new AudioCtx();
-    var osc = ctx.createOscillator();
-    var gain = ctx.createGain();
+    if (!AudioCtx) return;
+    if (!labAudioCtx || labAudioCtx.state === "closed") {
+      labAudioCtx = new AudioCtx();
+    }
 
-    osc.type = "sine";
-    // Map brainwave Hz (1-40) into an audible pitch (220-620 Hz)
-    osc.frequency.value = 220 + (freqHz * 10);
-    gain.gain.setValueAtTime(0.15, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+    var triggerOsc = function() {
+      var osc = labAudioCtx.createOscillator();
+      var gain = labAudioCtx.createGain();
+      osc.type = "sine";
+      // Map brainwave Hz (1-40) into an audible pitch (220-620 Hz)
+      osc.frequency.setValueAtTime(220 + (freqHz * 10), labAudioCtx.currentTime);
+      gain.gain.setValueAtTime(0.01, labAudioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.3, labAudioCtx.currentTime + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.001, labAudioCtx.currentTime + 0.65);
 
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.45);
+      osc.connect(gain);
+      gain.connect(labAudioCtx.destination);
+      osc.start(labAudioCtx.currentTime);
+      osc.stop(labAudioCtx.currentTime + 0.68);
+    };
+
+    if (labAudioCtx.state === "suspended") {
+      labAudioCtx.resume().then(triggerOsc).catch(triggerOsc);
+    } else {
+      triggerOsc();
+    }
   } catch (e) {
     console.log("Audio playback not supported in this browser.");
   }

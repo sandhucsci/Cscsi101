@@ -91,10 +91,10 @@
     <section id="multimedia-section" class="card">
       <h2>4. Multimedia Demonstration &amp; External Educational Links</h2>
       <p>
-        Listen to a simulated neural calibration tone generated directly in your browser, or explore external research portals below:
+        Listen to a simulated neural calibration tone generated directly in your browser (make sure your phone/device ringer or media volume is turned up and Silent mode is off), or explore external research portals below:
       </p>
       <button class="btn" onclick="playQuickDemoSound()">▶ Play Neural Calibration Tone (Audio)</button>
-      <span id="audioStatus" style="margin-left:10px; font-weight:bold; color:#0f766e;"></span>
+      <div id="audioStatus" style="margin-top:8px; font-weight:bold; color:#0f766e;"></div>
 
       <div style="margin-top: 16px;">
         <h3>Interactive Visual Neural Pulse Demo (SVG Animation)</h3>
@@ -180,111 +180,111 @@ for (var i = 0; i &lt; bciInnovations.length; i++) {
   </footer>
 
   <script>
-    function playQuickDemoSound() {
+    var demoAudioCtx = null;
+
+    function getDemoAudioContext() {
       var AudioCtx = window.AudioContext || window.webkitAudioContext;
-      var ctx = new AudioCtx();
-      var osc = ctx.createOscillator();
-      var gain = ctx.createGain();
-      osc.type = "triangle";
-      osc.frequency.value = 440;
-      gain.gain.setValueAtTime(0.18, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.6);
-      document.getElementById("audioStatus").textContent = "Playing 440 Hz calibration pulse...";
+      if (!AudioCtx) return null;
+      if (!demoAudioCtx || demoAudioCtx.state === "closed") {
+        demoAudioCtx = new AudioCtx();
+      }
+      if (demoAudioCtx.state === "suspended") {
+        demoAudioCtx.resume();
+      }
+      return demoAudioCtx;
+    }
+
+    function playQuickDemoSound() {
+      var statusEl = document.getElementById("audioStatus");
+      try {
+        var ctx = getDemoAudioContext();
+        if (!ctx) {
+          statusEl.textContent = "Web Audio is not supported on this browser.";
+          return;
+        }
+        var startTone = function() {
+          var osc = ctx.createOscillator();
+          var gain = ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(440, ctx.currentTime);
+          gain.gain.setValueAtTime(0.01, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.35, ctx.currentTime + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.85);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.88);
+          statusEl.textContent = "Playing 440 Hz neural calibration tone (check device media volume & silent switch).";
+        };
+        if (ctx.state === "suspended") {
+          ctx.resume().then(startTone).catch(startTone);
+        } else {
+          startTone();
+        }
+      } catch (err) {
+        statusEl.textContent = "Could not play audio: " + err.message;
+      }
     }
 
     function showCodeTab(tab) {
       var viewer = document.getElementById("codeViewer");
       if (tab === "js") {
-        viewer.textContent = "// script.js — Arrays, Loops, Functions, If-Else & Canvas Wave
-" +
-          "var bciInnovations = [
-" +
-          "  { title: "IISc Bengaluru Brain Co-Processor", region: "India" },
-" +
-          "  { title: "IIT Delhi Wearable Hybrid fNIRS-EEG", region: "India" },
-" +
-          "  { title: "BrainSightAI Connectomics", region: "India" },
-" +
-          "  { title: "AI Speech Restoration BCI", region: "Global" },
-" +
-          "  { title: "Adaptive Closed-Loop Neuroprosthetics", region: "Global" },
-" +
-          "  { title: "Consumer Non-Invasive EEG Wearables", region: "Global" }
-" +
-          "];
-
-" +
-          "function decodeBrainwave() {
-" +
-          "  var hz = parseFloat(document.getElementById("hzInput").value);
-" +
-          "  if (isNaN(hz) || hz < 1 || hz > 40) return;
-" +
-          "  if (hz < 4) { /* Delta */ }
-" +
-          "  else if (hz < 8) { /* Theta */ }
-" +
-          "  else if (hz < 13) { /* Alpha */ }
-" +
-          "  else if (hz < 30) { /* Beta */ }
-" +
-          "  else { /* Gamma */ }
-" +
-          "}";
+        viewer.textContent = [
+          "// script.js — Arrays, Loops, Functions, If-Else & Canvas Wave",
+          "var bciInnovations = [",
+          '  { title: "IISc Bengaluru Brain Co-Processor", region: "India" },',
+          '  { title: "IIT Delhi Wearable Hybrid fNIRS-EEG", region: "India" },',
+          '  { title: "BrainSightAI Connectomics", region: "India" },',
+          '  { title: "AI Speech Restoration BCI", region: "Global" },',
+          '  { title: "Adaptive Closed-Loop Neuroprosthetics", region: "Global" },',
+          '  { title: "Consumer Non-Invasive EEG Wearables", region: "Global" }',
+          "];",
+          "",
+          "function decodeBrainwave() {",
+          '  var hz = parseFloat(document.getElementById("hzInput").value);',
+          "  if (isNaN(hz) || hz < 1 || hz > 40) return;",
+          "  if (hz < 4) { /* Delta */ }",
+          "  else if (hz < 8) { /* Theta */ }",
+          "  else if (hz < 13) { /* Alpha */ }",
+          "  else if (hz < 30) { /* Beta */ }",
+          "  else { /* Gamma */ }",
+          "}"
+        ].join("\n");
       } else if (tab === "css") {
-        viewer.textContent = "/* style.css — Layout, Responsive Grid, Table Scroll & Pulse Animation */
-" +
-          "@keyframes pulseSignal {
-" +
-          "  0% { transform: scale(1); }
-" +
-          "  70% { transform: scale(1.04); }
-" +
-          "  100% { transform: scale(1); }
-" +
-          "}
-
-" +
-          ".table-wrap {
-" +
-          "  width: 100%;
-" +
-          "  overflow-x: auto;
-" +
-          "}
-
-" +
-          ".iframe-grid {
-" +
-          "  display: grid;
-" +
-          "  grid-template-columns: 1fr 1fr;
-" +
-          "  gap: 18px;
-" +
-          "}";
+        viewer.textContent = [
+          "/* style.css — Layout, Responsive Grid, Table Scroll & Pulse Animation */",
+          "@keyframes pulseSignal {",
+          "  0% { transform: scale(1); }",
+          "  70% { transform: scale(1.04); }",
+          "  100% { transform: scale(1); }",
+          "}",
+          "",
+          ".table-wrap {",
+          "  width: 100%;",
+          "  overflow-x: auto;",
+          "}",
+          "",
+          ".iframe-grid {",
+          "  display: grid;",
+          "  grid-template-columns: 1fr 1fr;",
+          "  gap: 18px;",
+          "}"
+        ].join("\n");
       } else if (tab === "lab") {
-        viewer.textContent = "<!-- lab.html — Interactive Brainwave Simulator, Search & Quiz -->
-" +
-          "<canvas id="brainCanvas" width="680" height="120"></canvas>
-" +
-          "<input type="text" id="hzInput" placeholder="e.g., 10 or 22">
-" +
-          "<button class="btn" onclick="decodeBrainwave()">Decode Signal & Play Tone</button>
-" +
-          "<input type="text" id="searchBox" placeholder="Type keyword: India, speech, IIT, EEG...">
-" +
-          "<button class="btn" onclick="searchProjects()">Filter Innovations</button>";
+        viewer.textContent = [
+          "<!-- lab.html — Interactive Brainwave Simulator, Search & Quiz -->",
+          '<canvas id="brainCanvas" width="680" height="120"></canvas>',
+          '<input type="text" id="hzInput" placeholder="e.g., 10 or 22">',
+          '<button class="btn" onclick="decodeBrainwave()">Decode Signal & Play Tone</button>',
+          '<input type="text" id="searchBox" placeholder="Type keyword: India, speech, IIT, EEG...">',
+          '<button class="btn" onclick="searchProjects()">Filter Innovations</button>'
+        ].join("\n");
       } else {
-        viewer.textContent = "<!-- global.html & india.html — Embedded inside <iframe> panels -->
-" +
-          "<!-- global.html: Global AI-BCI trends + scrollable modality comparison table -->
-" +
-          "<!-- india.html: IISc Bengaluru, IIT Delhi/Kanpur, NBRC, BrainSightAI & ethics -->";
+        viewer.textContent = [
+          "<!-- global.html & india.html — Embedded inside <iframe> panels -->",
+          "<!-- global.html: Global AI-BCI trends + scrollable modality comparison table -->",
+          "<!-- india.html: IISc Bengaluru, IIT Delhi/Kanpur, NBRC, BrainSightAI & ethics -->"
+        ].join("\n");
       }
     }
   </script>
