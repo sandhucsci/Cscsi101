@@ -19,7 +19,8 @@
     <a href="#iframes-section">Research Panels (iFrames)</a>
     <a href="#interactive-lab">Interactive JS Lab</a>
     <a href="#multimedia-section">Audio &amp; Video</a>
-    <a href="#sources">Sources &amp; Citations</a>
+    <a href="#source-code-section">Source Code</a>
+    <a href="#sources">Sources &amp; Copyright</a>
   </nav>
 
   <div class="container">
@@ -118,11 +119,49 @@
       </ul>
     </section>
 
-    <!-- Section 5: Acknowledgements & Sources -->
-    <section id="sources" class="card">
-      <h2>5. Sources &amp; Acknowledgements</h2>
+    <!-- Section 5: Project Source Code Posted Directly on the Website -->
+    <section id="source-code-section" class="card">
+      <h2>5. Project Source Code (HTML, CSS &amp; JavaScript)</h2>
       <p>
-        All website code (HTML, CSS, JavaScript) and diagrams (<code>bci_pipeline.svg</code> and <code>india_bci_infographic.svg</code>) were created by <strong>Sahilpreet Singh (815334)</strong> and <strong>Bachitar Singh (816415)</strong> for CSCI 101. Research facts were synthesized from the following public sources:
+        All program code for this project was written by <strong>Sahilpreet Singh (815334)</strong> and <strong>Bachitar Singh (816415)</strong> for CSCI 101. Select a file tab below to view our original source code directly on the website:
+      </p>
+      <div>
+        <button class="btn" onclick="showCodeTab('js')">script.js</button>
+        <button class="btn btn-secondary" onclick="showCodeTab('css')">style.css</button>
+        <button class="btn" onclick="showCodeTab('lab')">lab.html</button>
+        <button class="btn btn-secondary" onclick="showCodeTab('subpages')">global.html &amp; india.html</button>
+      </div>
+      <pre id="codeViewer" class="code-box">// CSCI 101 Project JavaScript — Written by Sahilpreet Singh (815334) &amp; Bachitar Singh (816415)
+var bciInnovations = [
+  { title: "IISc Bengaluru Brain Co-Processor", region: "India", category: "Rehabilitation" },
+  { title: "IIT Delhi Wearable Hybrid fNIRS-EEG", region: "India", category: "Non-Invasive Hardware" },
+  { title: "BrainSightAI Connectomics", region: "India", category: "Clinical AI" },
+  { title: "AI Speech Restoration BCI", region: "Global", category: "Communication" },
+  { title: "Adaptive Closed-Loop Neuroprosthetics", region: "Global", category: "Assistive Robotics" },
+  { title: "Consumer Non-Invasive EEG Wearables", region: "Global", category: "Wellness &amp; Control" }
+];
+
+function decodeBrainwave(hz) {
+  if (isNaN(hz) || hz &lt; 1 || hz &gt; 40) {
+    return "Enter a valid frequency between 1 and 40 Hz.";
+  }
+  if (hz &lt; 4) return "Delta Wave (1-3.9 Hz): Deep sleep / low-power standby.";
+  else if (hz &lt; 8) return "Theta Wave (4-7.9 Hz): Drowsiness / fatigue monitoring.";
+  else if (hz &lt; 13) return "Alpha Wave (8-12.9 Hz): Relaxed wakefulness / baseline calibration.";
+  else if (hz &lt; 30) return "Beta Wave (13-29.9 Hz): Active focus / motor command decoding.";
+  else return "Gamma Wave (30-40 Hz): High-level cognitive processing.";
+}
+
+for (var i = 0; i &lt; bciInnovations.length; i++) {
+  console.log(bciInnovations[i].title + " - " + bciInnovations[i].region);
+}</pre>
+    </section>
+
+    <!-- Section 6: Acknowledgements, Sources & Copyright -->
+    <section id="sources" class="card">
+      <h2>6. Sources, Acknowledgements &amp; Copyright</h2>
+      <p>
+        <strong>Copyright &amp; Academic Integrity:</strong> We respect copyright law and academic honesty guidelines. All HTML, CSS, and JavaScript code, as well as our original SVG diagrams (<code>bci_pipeline.svg</code> and <code>india_bci_infographic.svg</code>), were written and created by <strong>Sahilpreet Singh (815334)</strong> and <strong>Bachitar Singh (816415)</strong> for CSCI 101. No third-party source code or copyrighted media was copied without permission, and all external research sources are cited below:
       </p>
       <ol>
         <li>Indian Institute of Science (IISc). (2026). <em>IISc Moonshot Project on AI-Powered Brain Co-Processors for Neurological Rehabilitation</em>. Bengaluru, India.</li>
@@ -155,6 +194,98 @@
       osc.start();
       osc.stop(ctx.currentTime + 0.6);
       document.getElementById("audioStatus").textContent = "Playing 440 Hz calibration pulse...";
+    }
+
+    function showCodeTab(tab) {
+      var viewer = document.getElementById("codeViewer");
+      if (tab === "js") {
+        viewer.textContent = "// script.js — Arrays, Loops, Functions, If-Else & Canvas Wave
+" +
+          "var bciInnovations = [
+" +
+          "  { title: "IISc Bengaluru Brain Co-Processor", region: "India" },
+" +
+          "  { title: "IIT Delhi Wearable Hybrid fNIRS-EEG", region: "India" },
+" +
+          "  { title: "BrainSightAI Connectomics", region: "India" },
+" +
+          "  { title: "AI Speech Restoration BCI", region: "Global" },
+" +
+          "  { title: "Adaptive Closed-Loop Neuroprosthetics", region: "Global" },
+" +
+          "  { title: "Consumer Non-Invasive EEG Wearables", region: "Global" }
+" +
+          "];
+
+" +
+          "function decodeBrainwave() {
+" +
+          "  var hz = parseFloat(document.getElementById("hzInput").value);
+" +
+          "  if (isNaN(hz) || hz < 1 || hz > 40) return;
+" +
+          "  if (hz < 4) { /* Delta */ }
+" +
+          "  else if (hz < 8) { /* Theta */ }
+" +
+          "  else if (hz < 13) { /* Alpha */ }
+" +
+          "  else if (hz < 30) { /* Beta */ }
+" +
+          "  else { /* Gamma */ }
+" +
+          "}";
+      } else if (tab === "css") {
+        viewer.textContent = "/* style.css — Layout, Responsive Grid, Table Scroll & Pulse Animation */
+" +
+          "@keyframes pulseSignal {
+" +
+          "  0% { transform: scale(1); }
+" +
+          "  70% { transform: scale(1.04); }
+" +
+          "  100% { transform: scale(1); }
+" +
+          "}
+
+" +
+          ".table-wrap {
+" +
+          "  width: 100%;
+" +
+          "  overflow-x: auto;
+" +
+          "}
+
+" +
+          ".iframe-grid {
+" +
+          "  display: grid;
+" +
+          "  grid-template-columns: 1fr 1fr;
+" +
+          "  gap: 18px;
+" +
+          "}";
+      } else if (tab === "lab") {
+        viewer.textContent = "<!-- lab.html — Interactive Brainwave Simulator, Search & Quiz -->
+" +
+          "<canvas id="brainCanvas" width="680" height="120"></canvas>
+" +
+          "<input type="text" id="hzInput" placeholder="e.g., 10 or 22">
+" +
+          "<button class="btn" onclick="decodeBrainwave()">Decode Signal & Play Tone</button>
+" +
+          "<input type="text" id="searchBox" placeholder="Type keyword: India, speech, IIT, EEG...">
+" +
+          "<button class="btn" onclick="searchProjects()">Filter Innovations</button>";
+      } else {
+        viewer.textContent = "<!-- global.html & india.html — Embedded inside <iframe> panels -->
+" +
+          "<!-- global.html: Global AI-BCI trends + scrollable modality comparison table -->
+" +
+          "<!-- india.html: IISc Bengaluru, IIT Delhi/Kanpur, NBRC, BrainSightAI & ethics -->";
+      }
     }
   </script>
 </body>

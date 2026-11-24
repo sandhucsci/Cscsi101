@@ -51,7 +51,7 @@ header p {
 
 nav {
   background-color: #1e293b;
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   position: sticky;
   top: 0;
@@ -62,11 +62,11 @@ nav a, nav button {
   color: #ffffff;
   background-color: #334155;
   text-decoration: none;
-  padding: 8px 14px;
-  margin: 4px;
+  padding: 6px 11px;
+  margin: 3px;
   border-radius: 6px;
   border: 1px solid #475569;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   cursor: pointer;
   display: inline-block;
   transition: background-color 0.2s;
@@ -184,6 +184,18 @@ input[type="text"], select {
   border-radius: 4px;
 }
 
+.code-box {
+  margin-top: 12px;
+  padding: 14px;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
 .diagram-wrap {
   text-align: center;
   margin: 16px 0;
@@ -198,16 +210,23 @@ input[type="text"], select {
   padding: 8px;
 }
 
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table.data-table {
   width: 100%;
+  min-width: 480px;
   border-collapse: collapse;
   margin-top: 12px;
-  font-size: 0.94rem;
+  font-size: 0.92rem;
 }
 
 table.data-table th, table.data-table td {
   border: 1px solid #cbd5e1;
-  padding: 10px;
+  padding: 9px;
   text-align: left;
 }
 
