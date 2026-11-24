@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive AI-BCI Simulator &amp; Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="subpage">
+  <h2>Interactive AI-BCI Lab (JavaScript &amp; Multimedia)</h2>
+  <p>Test our interactive brainwave simulator, search Indian &amp; global BCI projects, and take the quick quiz.</p>
+
+  <!-- Interactive Part 1: Canvas Animation + Sound + Signal Decoder -->
+  <h3>1. Live Brainwave Animation &amp; AI Signal Decoder</h3>
+  <canvas id="brainCanvas" width="680" height="120" style="width:100%; max-width:680px; border:1px solid #94a3b8; border-radius:6px; background:#0f172a;"></canvas>
+  <br>
+  <label for="hzInput"><strong>Enter Brainwave Frequency (1–40 Hz):</strong></label>
+  <input type="text" id="hzInput" placeholder="e.g., 10 or 22">
+  <button class="btn" onclick="decodeBrainwave()">Decode Signal &amp; Play Tone</button>
+  <button class="btn btn-secondary" onclick="toggleWaveAnimation()">Pause / Resume Wave</button>
+  <div id="signalResult" class="output-box">
+    Enter a frequency in Hz (for example: 2, 6, 10, 20, or 35) and click <strong>Decode Signal &amp; Play Tone</strong>.
+  </div>
+
+  <!-- Interactive Part 2: Array + Loop Directory Filter -->
+  <h3>2. BCI Innovation Explorer (Array &amp; Loop Search)</h3>
+  <input type="text" id="searchBox" placeholder="Type keyword: India, speech, IIT, EEG...">
+  <button class="btn" onclick="searchProjects()">Filter Innovations</button>
+  <button class="btn btn-secondary" onclick="showAllProjects()">Show All</button>
+  <div id="projectList" class="output-box"></div>
+
+  <!-- Interactive Part 3: Conditional Quiz -->
+  <h3>3. Quick BCI Knowledge Check</h3>
+  <p><strong>Question:</strong> Which BCI method records brain signals safely from outside the scalp without surgery?</p>
+  <select id="quizSelect">
+    <option value="">-- Choose an answer --</option>
+    <option value="invasive">Intracortical Microelectrode Array</option>
+    <option value="eeg">Non-Invasive EEG / fNIRS Headset</option>
+    <option value="ecog">Surgical ECoG Grid</option>
+  </select>
+  <button class="btn" onclick="checkQuizAnswer()">Check Answer</button>
+  <div id="quizFeedback" class="output-box">Select an option above to check your understanding.</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
